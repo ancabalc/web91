@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="../models/Accounts.js"></script>
+        <script type="text/javascript" src="../views/createAccount.js"></script>
+    </head>
+    <body>
+        <div id='create-user-container'>
+            <section id='user-info'>
+                <h2>Create Account</h2>
+                <fieldset>
+                    <legend>User Info</legend>
+                    <label for="Name">Name and Surname:</label>
+                    <input type="text" name="Name"/><br>
+                    <label for="email">Email address:</label>
+                    <input type="text" name="email"/><br>
+                    <label for="password">Password:</label>
+                    <input type="text" name="password"/><br>
+                    <label for="repassword">Re-enter password:</label>
+                    <input type="text" name="repassword"/><br>
+                    <label for="role">Role:</label>
+                    <select id='role-dropdown'>
+                        <option name='role' value=''></option>
+                        <option name='role' value='provider'>Provider</option>
+                        <option name='role' value='client'>Client</option>
+                    </select>
+                </fieldset>
+            </section>
+        </div>
+    </body>
+</html>
