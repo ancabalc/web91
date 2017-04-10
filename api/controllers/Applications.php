@@ -1,3 +1,4 @@
+
 <?php 
     
      require "models/ApplicationsModel.php";
@@ -28,4 +29,3 @@
     
     }
      
- 
