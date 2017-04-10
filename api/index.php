@@ -2,13 +2,8 @@
   session_start();
     require "configs/config.php";
     require "configs/routes.php";
-<<<<<<< HEAD
-    
-    const BLOG = '';
-=======
 
     const BLOG = '/api';
->>>>>>> 08d0948487b7549eabf88b772fc3941a415e7e88
    
     if (!empty($_SERVER['REDIRECT_URL'])) {
        $url = $_SERVER['REDIRECT_URL'];
