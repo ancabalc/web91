@@ -3,15 +3,18 @@
     require "configs/config.php";
     require "configs/routes.php";
     
-    const BLOG = 'I';
+    // const BLOG = 'I';
    
     if (!empty($_SERVER['REDIRECT_URL'])) {
-        $url = $_SERVER['REDIRECT_URL'];
-        $page = str_replace(BLOG,'',$url);
+        
+        $page = $_SERVER['REDIRECT_URL'];
+        
+        // $url = $_SERVER['REDIRECT_URL'];
+      //  $page = str_replace(BLOG,'',$url);
         
         if (array_key_exists($page, $routes)) {
-            $class = $routes[$page]["class"]; // "Users"
-            $method = $routes[$page]["method"]; // "getAll"
+            $class = $routes[$page]["class"]; // "e.g. Accounts"
+            $method = $routes[$page]["method"]; // "e.g. createAcount"
             
             //Recuperare date JSON
             $methodReq = $_SERVER["REQUEST_METHOD"];
