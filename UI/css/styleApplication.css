@@ -1,0 +1,27 @@
+.box{
+border-style: solid;
+border-radius: 20px;
+font-size:14px;
+font-weight:bolder;
+width:350px;
+margin:20px 250px 0 35px;
+float:left;
+font-family:"Arial Black";
+
+}
+
+
+.box input{
+width:100%;
+height:35px;
+margin-top:10px;
+border-radius:20px;
+padding:5px;
+}
+
+.box input[type=button]{
+background-color:blue;
+font-Weight:bold;
+font-size:20px;
+}
+
