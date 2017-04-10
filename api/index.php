@@ -2,17 +2,18 @@
   session_start();
     require "configs/config.php";
     require "configs/routes.php";
+    //require "models/UsersModel.php";
+    //require "controllers/Users.php";
     
-    const BLOG = 'I';
+    const BLOG = '/api';
    
     if (!empty($_SERVER['REDIRECT_URL'])) {
-        $url = $_SERVER['REDIRECT_URL'];
-        $page = str_replace(BLOG,'',$url);
+       $url = $_SERVER['REDIRECT_URL'];
+       $page = str_replace(BLOG,'',$url);
         
         if (array_key_exists($page, $routes)) {
-            $class = $routes[$page]["class"]; // "Users"
-            $method = $routes[$page]["method"]; // "getAll"
-            
+            $class = $routes[$page]["class"]; //users
+            $method = $routes[$page]["method"]; //updateUser
             //Recuperare date JSON
             $methodReq = $_SERVER["REQUEST_METHOD"];
             
@@ -37,20 +38,10 @@
                     }
                     break;
             }
-          
-            
-            require "controllers/".$class.".php";
+            require "controllers/". $class .".php";
             $controller = new $class();
             $response = $controller->$method();
-            
-            // echo "<pre>";
-            // print_r($response);
-            // echo "</pre>";
-            
-            // Pregatire si returnare raspuns pentru JavaScript
-            header("Content-Type: application/json");
-            echo json_encode($response);
-            
+
         } else {
             http_response_code(404);
             echo "Page not found.";        
