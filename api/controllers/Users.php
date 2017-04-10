@@ -6,7 +6,7 @@
         
         //==========UPDATEING USER==========\\
         public function updateUser() {
-      
+  
             $errors = array();
             if (isset($_POST["name"])) {
                 if (empty($_POST["name"])) {

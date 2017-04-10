@@ -2,9 +2,7 @@
   session_start();
     require "configs/config.php";
     require "configs/routes.php";
-    //require "models/UsersModel.php";
-    //require "controllers/Users.php";
-    
+
     const BLOG = '/api';
    
     if (!empty($_SERVER['REDIRECT_URL'])) {
@@ -14,6 +12,7 @@
         if (array_key_exists($page, $routes)) {
             $class = $routes[$page]["class"]; //users
             $method = $routes[$page]["method"]; //updateUser
+
             //Recuperare date JSON
             $methodReq = $_SERVER["REQUEST_METHOD"];
             
