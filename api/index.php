@@ -3,7 +3,7 @@
     require "configs/config.php";
     require "configs/routes.php";
     
-    // const BLOG = 'I';
+    // const BLOG = '';
    
     if (!empty($_SERVER['REDIRECT_URL'])) {
         
