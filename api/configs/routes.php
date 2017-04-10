@@ -1,3 +1,4 @@
 <?php
-    $routes['/api/users/update'] = array( "class" => "", "method" => "");
+    $routes['/users/update'] = array("class" => "Users", "method" => "updateUser");
+    
 ?>
