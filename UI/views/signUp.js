@@ -11,8 +11,8 @@ $(document).ready(onHtmlLoaded);
 
 function onHtmlLoaded(){
     
-    var submitButton = $("#submit");
-   
+    var submitButton = $("button[type='submit']");
+
     submitButton.on('click',submit);
     
     
@@ -26,9 +26,10 @@ function submit(){
     emailText = $("input[name='email']").val();
     passwordText = $("input[name='password']").val();
     repasswordText = $("input[name='repassword']").val();
-    roleText = $('#role-dropdown').val();
+    roleText = $("input[type='radio']").val();
     
      if(checkUserInputs()){
+         
          console.log('Sending data to the server')
      }
 }
