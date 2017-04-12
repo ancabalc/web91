@@ -5,6 +5,7 @@
     class Users {
         
         //==========UPDATEING USER==========\\
+        
         public function updateUser() {
   
             $errors = array();
