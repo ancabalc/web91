@@ -41,5 +41,14 @@
             return array("rowsAffected"=>$stmt->rowCount(),"errorCode"=> $stmt->errorInfo()[1],"errorMsg"=> $stmt->errorInfo()[2]);
         }
         
+        function checkUser($email, $pass) 
+        {
+            $sql = 'select first_name, last_name, email, id from users where email = ? and password = ?';
+            $stmt = $this->dbh->prepare($sql);
+            $stmt->execute(array($email, 
+                                $pass));
+            return $stmt->fetch(PDO::FETCH_ASSOC);    
+        }
+        
     }//END class
 >>>>>>> 19f4e33648791626c95fd0c5fc0b0a2a4980becc

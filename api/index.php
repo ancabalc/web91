@@ -40,6 +40,9 @@
             require "controllers/". $class .".php";
             $controller = new $class();
             $response = $controller->$method();
+            
+            //Return response to the UI
+            echo json_encode($response);
 
         } else {
             http_response_code(404);
