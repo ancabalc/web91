@@ -1,31 +1,22 @@
 <?php
-<<<<<<< HEAD
-    require "models/UsersModels.php";
+    $path = "models/UsersModel.php";
+    
+    require_once "$path";
     
     class Users {
         private $UsersModel;
         
         function __construct () {
-            $this->UsersModel=new UsersModel();
-    } 
+            $this->usersModel=new UsersModel();
+        }
     
-    function getTopProviders() {
-        if (!empty($_GET['name'])) && !empty($_GET['description']) && !empty($_GET['image']),
-    } 
-    return $users->getTopProviders();
-    }else{
-        return array("error"=>"Something went wrong with your providers.");
-    }
+        public function listTopProviders() {
+            return $this->usersModel->listTopProviders();
+            }
         
-    
-=======
-
-    require_once "models/UsersModel.php";
-
-    class Users {
-        
-        //==========UPDATEING USER==========\\
-        public function updateUser() {
+   
+    //==========UPDATEING USER==========\\
+        function updateUser() {
   
             $errors = array();
             if (isset($_POST["name"])) {
@@ -42,7 +33,6 @@
                 }
             }
         }
-    
-    
-}
->>>>>>> 19f4e33648791626c95fd0c5fc0b0a2a4980becc
+    }
+
+ 

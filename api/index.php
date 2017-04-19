@@ -2,6 +2,7 @@
   session_start();
     require "configs/config.php";
     require "configs/routes.php";
+    
 
     const BLOG = '/api';
    
