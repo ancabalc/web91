@@ -42,35 +42,6 @@
 
     <!-- BODY -->
     <body>
-<<<<<<< HEAD
-        <div id='create-user-container'>
-            <section id='user-info'>
-                <h2>Create Account</h2>
-                <fieldset>
-                    <legend>User Info</legend>
-                    <label for="Name">Name and Surname:</label>
-                    <input type="text" name="name"/>
-                    <p id='error-name'>*</p><br>
-                    <label for="email">Email address:</label>
-                    <input type="text" name="email"/>
-                    <p id='error-email'>*</p><br>
-                    <label for="password">Password:</label>
-                    <input type="text" name="password"/>
-                     <p id='error-password'>*</p><br>
-                    <label for="repassword">Re-enter password:</label>
-                    <input type="text" name="repassword"/>
-                    <p id='error-repassword'>*</p><br>
-                    <label for="role">Role:</label>
-                    <select id='role-dropdown'>
-                        <option name='role' value=''></option>
-                        <option name='role' value='provider'>Provider</option>
-                        <option name='role' value='client'>Client</option>
-                    </select>
-                    <p id='error-role'>*</p><br>
-                    <button id='submit'>Create Account</button>
-                </fieldset>
-            </section>
-=======
 
         <!--========== HEADER ==========-->
         <header class="header">
@@ -165,29 +136,34 @@
     
                 <div class="row">
                     <div class="col-md-8 col-sm-7">
-                        <form method="POST" id="register-form" class="form-horizontal" enctype="multipart/form-data">
+                        <!--<form method="POST" id="register-form" class="form-horizontal" enctype="multipart/form-data">-->
+                        <section  id="register-form"  class="form-horizontal">
                             <div class="form-group">
                                 <label class="col-sm-6 control-label" for="name">Nume (obligatoriu):</label>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control name-input" id="name" name="name" minlength="3" placeholder="Nume" required>
+                                    <p id='error-name'>*</p>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-6 control-label" for="email">Email (obligatoriu):</label>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control email-input" id="email" name="email" placeholder="Email" required>
+                                    <p id='error-email'>*</p>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-6 control-label" for="password">Parola (obligatoriu):</label>
                                 <div class="col-sm-6">
                                     <input type="password" class="form-control password-input" id="password" name="password" placeholder="Parola" required>
+                                    <p id='error-password'>*</p>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-6 control-label" for="repassword">Rescrie parola (obligatoriu):</label>
                                 <div class="col-sm-6">
                                     <input type="password" class="form-control repassword-input" id="repassword" name="repassword" placeholder="Rescrie parola" required>
+                                    <p id='error-repassword'>*</p>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -195,6 +171,7 @@
                                 <div class="col-sm-6">
                                     <input type="radio"  name="role" value="client" class="role-input"> Client
                                     <input type="radio"  name="role" value="provider" class="role-input"> Furnizor
+                                    <p id='error-role'>*</p>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -210,13 +187,40 @@
                                 </div>
                             </div>
                             <button type="submit" class="btn-theme btn-theme-sm btn-base-bg text-uppercase sign-up-btn">Sign up</button>
-                        </form>
+                        </section>
+                        <!--</form>-->
                     </div>
                 </div>
                 <!--// end row -->
             </div>
->>>>>>> 255733bfd41df44e82e07a4cfa27f93f9ae2ec6d
-        </div>
+        <!--<div id='create-user-container'>-->
+        <!--    <section id='user-info'>-->
+        <!--        <h2>Create Account</h2>-->
+        <!--        <fieldset>-->
+        <!--            <legend>User Info</legend>-->
+        <!--            <label for="Name">Name and Surname:</label>-->
+        <!--            <input type="text" name="name"/>-->
+        <!--            <p id='error-name'>*</p><br>-->
+        <!--            <label for="email">Email address:</label>-->
+        <!--            <input type="text" name="email"/>-->
+        <!--            <p id='error-email'>*</p><br>-->
+        <!--            <label for="password">Password:</label>-->
+        <!--            <input type="text" name="password"/>-->
+        <!--             <p id='error-password'>*</p><br>-->
+        <!--            <label for="repassword">Re-enter password:</label>-->
+        <!--            <input type="text" name="repassword"/>-->
+        <!--            <p id='error-repassword'>*</p><br>-->
+        <!--            <label for="role">Role:</label>-->
+        <!--            <select id='role-dropdown'>-->
+        <!--                <option name='role' value=''></option>-->
+        <!--                <option name='role' value='provider'>Provider</option>-->
+        <!--                <option name='role' value='client'>Client</option>-->
+        <!--            </select>-->
+        <!--            <p id='error-role'>*</p><br>-->
+        <!--            <button id='submit'>Create Account</button>-->
+        <!--        </fieldset>-->
+        <!--    </section>-->
+        <!--</div>-->
 
         <!--========== FOOTER ==========-->
         <footer class="footer">

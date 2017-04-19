@@ -12,6 +12,7 @@
          }
 
         //==========UPDATEING USER==========\\
+        
         function updateUser($data) {
             $params = [':id' => $data["id"],
                        ':name' => $data["name"],
@@ -24,6 +25,8 @@
             return $sth->rowCount();
         }
 
+        //============INSERT USER===========\\
+        
         function insertUser($user){
             
             $sql = "INSERT INTO users (name,email,password,role) VALUES (?,?,?,?)";

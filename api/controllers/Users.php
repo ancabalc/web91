@@ -16,7 +16,10 @@
         
    
     //==========UPDATEING USER==========\\
-        function updateUser() {
+ 
+        
+        public function updateUser() {
+
   
             $errors = array();
             if (isset($_POST["name"])) {

@@ -11,8 +11,8 @@ $(document).ready(onHtmlLoaded);
 
 function onHtmlLoaded(){
     
-    var submitButton = $("#submit");
-   
+    var submitButton = $("button[type='submit']");
+
     submitButton.on('click',submit);
     
     
@@ -26,9 +26,10 @@ function submit(){
     emailText = $("input[name='email']").val();
     passwordText = $("input[name='password']").val();
     repasswordText = $("input[name='repassword']").val();
-    roleText = $('#role-dropdown').val();
+    roleText = $("input[type='radio']:checked").val();
     
      if(checkUserInputs()){
+         
          console.log('Sending data to the server')
      }
 }
@@ -41,8 +42,8 @@ function checkUserInputs(){
     var errorPassword = $('#error-password');
     var errorRepassword = $('#error-repassword');
     var errorRole = $('#error-role');
-   
-    if(nameText === undefined || emailText === undefined || passwordText === undefined || repasswordText === undefined || roleText === undefined){
+  
+    if(nameText === undefined || emailText === undefined || passwordText === undefined || repasswordText === undefined){
         alert("Internal error.Cannot get all inputs!!!");
         return false;
     }
@@ -81,7 +82,7 @@ function checkUserInputs(){
     }else{
         errorRepassword.html("*");
     }
-    if(roleText.trim().length === 0 || (roleText !== 'provider' && roleText !== 'client')){
+    if(roleText === undefined || roleText.trim().length === 0 || (roleText !== 'provider' && roleText !== 'client')){
         errorRole.html("*You didn`t choose role");
         allClear = false;
     }else{
