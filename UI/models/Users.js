@@ -4,6 +4,27 @@ function Users() {
     this.models = [];
 }
 
+Users.prototype.createUser = function(user){
+  
+  var config = {
+      url: 'https://web91-ciprianbiscovan.c9users.io/api/accounts/create',
+      method: 'POST',
+      dataType: 'JSON',
+      data:{
+          name: user.name,
+          email:user.email,
+          password: user.password,
+          repassword: user.repassword,
+          role: user.role
+      },
+      
+      error: function(){
+          
+      }
+  };  
+    
+};
+
 Users.prototype.updateUser = function(name,description,image) {
         
         var ajaxOptions = {
