@@ -82,12 +82,15 @@
             if (!empty($_POST["email"]) && !empty($_POST["pass"])) 
             {
                 $pass = crypt($_POST["pass"], PASS_SALT);
-                $user = $this->usersModel->checkUser($_POST["email"], $pass);
+                
+                //changed usersModel to userModel 
+                $user = $this->userModel->checkUser($_POST["email"], $pass);
+              
                 if (is_array($user)) 
                 {
                     $_SESSION["user_id"] = $user["id"];
                     $_SESSION["isLogged"] = TRUE;
-                    $_SESSION["name"] = $user["first_name"] . " " . $user["last_name"];
+                    $_SESSION["name"] = $user["name"];// This fileds don`t exist in this database ---> $user["first_name"] . " " . $user["last_name"];
                     return array("isLogged" => $_SESSION["isLogged"],
                     "user_id" => $_SESSION["user_id"]);
                 } else 

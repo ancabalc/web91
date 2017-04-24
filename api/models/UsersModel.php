@@ -45,7 +45,8 @@
 
         function checkUser($email, $pass) 
         {
-            $sql = 'select first_name, last_name, email, id from users where email = ? and password = ?';
+            //$sql = 'select first_name, last_name, email, id from users where email = ? and password = ?'; NOT WORKING
+            $sql = 'SELECT name,email,id FROM users where email = ? and password = ?'; // corrected select query
             $stmt = $this->dbh->prepare($sql);
             $stmt->execute(array($email, 
                                 $pass));
