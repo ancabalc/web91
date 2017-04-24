@@ -22,13 +22,16 @@
         
         function insertUser($user){
             
-            $sql = "INSERT INTO users (name,email,password,role) VALUES (?,?,?,?)";
+            $sql = "INSERT INTO users (name,email,password,role,job,description,image) VALUES (?,?,?,?,?,?,?)";
             
             $stmt= $this->dbh->prepare($sql);
             $stmt->execute(array($user['name'],
                                  $user['email'],
                                  $user['password'],
-                                 $user['role']
+                                 $user['role'],
+                                 $user['job'],
+                                 $user['description'],
+                                 $user['image_name']
                           ));
             return array("rowsAffected"=>$stmt->rowCount(),"errorCode"=> $stmt->errorInfo()[1],"errorMsg"=> $stmt->errorInfo()[2]);
         }
