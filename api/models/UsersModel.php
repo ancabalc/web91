@@ -3,6 +3,13 @@
     require_once "DB.php";
     
     class UsersModel extends DB {
+         function listTopProviders () {
+        $sql = "select id, name, description, image from users where role = 'provider' order by id desc limit 3";
+        
+        $stmt=$this->dbh->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+         }
 
         //==========UPDATEING USER==========\\
         
@@ -35,7 +42,7 @@
                           ));
             return array("rowsAffected"=>$stmt->rowCount(),"errorCode"=> $stmt->errorInfo()[1],"errorMsg"=> $stmt->errorInfo()[2]);
         }
-        
+
         function checkUser($email, $pass) 
         {
             $sql = 'select first_name, last_name, email, id from users where email = ? and password = ?';
@@ -45,4 +52,4 @@
             return $stmt->fetch(PDO::FETCH_ASSOC);    
         }
         
-    }//END class
+}//END class
