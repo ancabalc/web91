@@ -1,5 +1,7 @@
 /*global $*/
 /*global Users*/
+        //==========UPDATEING USER==========\\
+
 $(window).ready(function(){
     var users = new Users();
     var id = 1;
@@ -55,13 +57,13 @@ $("#file").change(function(){
         }
         
         $.ajax({
-            url:"/uploads?id="+id,
+            url:"https://web91-andrei.c9users.io/uploads?id="+id,
             type:"POST",
             data:formData,
             processData:false,
             contentType:false,
             success:function(resp){
-                window.location.href = "/UI/pages/user-profile.html";
+                window.location.href = "https://web91-andrei.c9users.io/UI/pages/user-profile.html";
             },
             error:function(){
                 console.log("Oops! Update profile failed");
