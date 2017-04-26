@@ -9,7 +9,7 @@
         public function updateUser() {
   
             $errors = array();
-            if (isset($_POST["name"])) {
+            if (isset($_POST["name"],$_POST["description"],$_FILES["file"])) {
                 if (empty($_POST["name"])) {
                     $errors["name"] = "Name is required";
                 }
@@ -22,7 +22,6 @@
                     $file = $_FILES["file"];
                 }
             }
+            else $errors["parameter"] = "Parameter count missmatch";
         }
-    
-    
 }
