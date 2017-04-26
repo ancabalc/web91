@@ -79,6 +79,7 @@
         
         function login() 
         {
+           
             if (!empty($_POST["email"]) && !empty($_POST["pass"])) 
             {
                 $pass = crypt($_POST["pass"], PASS_SALT);
@@ -91,15 +92,27 @@
                     $_SESSION["user_id"] = $user["id"];
                     $_SESSION["isLogged"] = TRUE;
                     $_SESSION["name"] = $user["name"];// This fileds don`t exist in this database ---> $user["first_name"] . " " . $user["last_name"];
-                    return array("isLogged" => $_SESSION["isLogged"],
-                    "user_id" => $_SESSION["user_id"]);
+                    return array("isLogged"=>$_SESSION["isLogged"],
+                    "user_id"=>$_SESSION["user_id"]);
                 } else 
                 {
-                    return array("error" => "Invalid credentials.");
+                    return array("error"=>"Invalid credentials.");
                 }
             } else
             {
-                return array("error" => "Empty credentials.");    
+                return array("error"=>"Empty credentials.");    
+            }
+        }
+        
+        function checkSession(){
+            if(!isset($_SESSION["isLogged"]) || (isset($_SESSION["isLogged"]) && $_SESSION["isLogged"] === false )){
+                return array('isLogged'=>false,"message"=>"Nobody logged in!");
+            }else{
+                if($_SESSION["isLogged"] === true){
+                    return array('isLogged'=>true,"message"=>"Logged In","id"=>$_SESSION["user_id"]);
+                }else{
+                     return array('isLogged'=>false,"message"=>"Somebody could be logged!");
+                }
             }
         }
         

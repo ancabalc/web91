@@ -6,6 +6,7 @@
     $routes['/users/list'] = array ("class"=> "Users", "method" => "listTopProviders");
     $routes['/users/update'] = array("class" => "Users", "method" => "updateUser");
     $routes['/accounts/create'] = array( "class" => "Accounts", "method" => "createAccount");
+     $routes['/accounts/checkSession'] = array( "class" => "Accounts", "method" => "checkSession");
 
 
 ?>

@@ -57,3 +57,24 @@ Users.prototype.updateUser = function(name,description,image) {
         };
         return $.ajax(ajaxOptions);
 };
+
+Users.prototype.login = function(email,password){
+    var config = {
+        url: 'https://web91-ciprianbiscovan.c9users.io/api/accounts/login',
+        type:'POST',
+        dataType: 'JSON',
+        data:{
+            email:email,
+            pass:password
+        },
+        
+        error: function(response){
+            console.log("Oops!something went wrong while authenticating user!");
+            console.log(response);
+        },
+        
+    };
+    
+    return $.ajax(config); //send req. to server and return the result
+};
+
