@@ -32,6 +32,9 @@
                    return array("success"=>false,"message"=>"Passwords don`t match!");
                }
                
+               //TO DO
+               //add check for user email in database
+               
                //check if role is valid 
                if(strtolower($_POST['role']) !== "provider" && strtolower($_POST['role']) !== "client"){
                    return array("success"=>false,"message"=>"Role not valid!");
@@ -76,6 +79,7 @@
                 return array("success"=>false,"message"=>"All fields are required!");
             }
         }//END createAccount method
+        
         
         function login() 
         {
@@ -130,3 +134,7 @@
         
     }//END class
 
+login();
+
+
+?>
