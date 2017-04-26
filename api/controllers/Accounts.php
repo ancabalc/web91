@@ -9,12 +9,13 @@
             $this->userModel = new UsersModel();
         }
         
-        //FIELDS: name, email, password, repassword, role
+        //FIELDS: name, email, password, repassword, role,job,descriptin,avatar
         function createAccount(){
             
             //Check if all required fields are received
-            if(isset($_POST['name'],$_POST['email'],$_POST['password'],$_POST['repassword'],$_POST['role']) && 
-            !empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['repassword']) && !empty($_POST['role'])){
+            if(isset($_POST['name'],$_POST['email'],$_POST['password'],$_POST['repassword'],$_POST['role'],$_POST['description'],$_POST['job'],$_FILES['avatar']) && 
+            !empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['repassword']) && !empty($_POST['role'])
+            && !empty($_POST['description']) && !empty($_POST['job']) ){
             
               //Validate user email address
               if(!filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)){
@@ -39,6 +40,23 @@
                    return array("success"=>false,"message"=>"Role not valid!");
                }
                
+                $_POST['image_name'] = '';
+                
+                // save uploaded image file
+                    
+                    $file = $_FILES['avatar'];
+                    
+                    //check if file is indeed an image
+                    if(isset($file['type']) && preg_match('/^image\/.*/mi',$file['type'])){
+                        $fileName = pathinfo($file["name"])['filename'];
+                        $fileExtension = pathinfo($file["name"])['extension'];
+                        $newFileName = $fileName . strtotime('now') . "." . $fileExtension;
+                        $_POST['image_name'] = $newFileName;
+                    }
+                    else{
+                         return array("success"=>false,"message"=>"Only pictures are allowed!");
+                    }
+               
                //Encrypt password before storing it to DB
                //Replace user`s un-encrypted password with encrypted password
                $cryptPassword = crypt($_POST['password'],PASS_SALT);
@@ -49,6 +67,7 @@
                
                //return result after DB query success/fail
                if($dbResult['errorCode'] == null){
+                   move_uploaded_file($file["tmp_name"], "avatars/" . $newFileName);
                    return array("success"=>true,"message"=>"Account created succesfully!");
                }else{
                     return array("success"=>false,"message"=>"Account creation failed. REASON: " . $dbResult['errorMsg']);
@@ -67,12 +86,15 @@
             if (!empty($_POST["email"]) && !empty($_POST["pass"])) 
             {
                 $pass = crypt($_POST["pass"], PASS_SALT);
-                $user = $this->usersModel->checkUser($_POST["email"], $pass);
+                
+                //changed usersModel to userModel 
+                $user = $this->userModel->checkUser($_POST["email"], $pass);
+              
                 if (is_array($user)) 
                 {
                     $_SESSION["user_id"] = $user["id"];
                     $_SESSION["isLogged"] = TRUE;
-                    $_SESSION["name"] = $user["first_name"] . " " . $user["last_name"];
+                    $_SESSION["name"] = $user["name"];// This fileds don`t exist in this database ---> $user["first_name"] . " " . $user["last_name"];
                     return array("isLogged" => $_SESSION["isLogged"],
                     "user_id" => $_SESSION["user_id"]);
                 } else 

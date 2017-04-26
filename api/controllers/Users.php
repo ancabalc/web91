@@ -1,12 +1,25 @@
 <?php
-
-    require_once "models/UsersModel.php";
-
+    $path = "models/UsersModel.php";
+    
+    require_once "$path";
+    
     class Users {
+        private $UsersModel;
         
-        //==========UPDATEING USER==========\\
+        function __construct () {
+            $this->usersModel=new UsersModel();
+        }
+    
+        public function listTopProviders() {
+            return $this->usersModel->listTopProviders();
+            }
+        
+   
+    //==========UPDATEING USER==========\\
+ 
         
         public function updateUser() {
+
   
             $errors = array();
             if (isset($_POST["name"],$_POST["description"],$_FILES["file"])) {
