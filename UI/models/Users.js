@@ -17,7 +17,8 @@ Users.prototype.createUser = function(user){
       uploadData.append("avatar",user.picture);
   
   var config = {
-      url: '/api/accounts/create',
+
+      url: 'https://web91-didisuperapple.c9users.io/api/accounts/create',
       method: 'POST',
       dataType: 'JSON',
       data:uploadData,
@@ -25,6 +26,7 @@ Users.prototype.createUser = function(user){
       contentType:false,
       error: function(response){
           
+          console.log(response)
           console.log("Error while request create User!");
       }
   };  

@@ -81,8 +81,7 @@
         }//END createAccount method
         
         
-        function login() 
-        {
+        function login() {
            
             if (!empty($_POST["email"]) && !empty($_POST["pass"])) 
             {
@@ -134,7 +133,6 @@
         
     }//END class
 
-login();
 
 
 ?>
