@@ -116,5 +116,17 @@
             }
         }
         
+        function logout(){
+            if(isset($_SESSION["isLogged"]) && $_SESSION["isLogged"] === true ){
+                unset($_SESSION['isLogged']);
+                unset($_SESSION['user_id']);
+                unset($_SESSION['name']);
+                session_destroy();
+                 return array("success"=>true,"message"=>"Logout successfull!");
+            }else{
+                return array("success"=>false,"message"=>"Nobody is loggedIn!");
+            }
+        }
+        
     }//END class
 

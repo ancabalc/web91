@@ -55,7 +55,7 @@ function submit(){
         user.createUser(newUser).done(function(response){
             if(response.success === true){
                 console.log(response.message);
-                window.location.href = "https://web91-ciprianbiscovan.c9users.io/UI/pages/login.html";
+                window.location.href = "/UI/pages/login.html";
             }else{
                 console.log(response.message);
             }

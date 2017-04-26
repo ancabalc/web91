@@ -17,7 +17,7 @@ Users.prototype.createUser = function(user){
       uploadData.append("avatar",user.picture);
   
   var config = {
-      url: 'https://web91-ciprianbiscovan.c9users.io/api/accounts/create',
+      url: '/api/accounts/create',
       method: 'POST',
       dataType: 'JSON',
       data:uploadData,
@@ -60,7 +60,7 @@ Users.prototype.updateUser = function(name,description,image) {
 
 Users.prototype.login = function(email,password){
     var config = {
-        url: 'https://web91-ciprianbiscovan.c9users.io/api/accounts/login',
+        url: '/api/accounts/login',
         type:'POST',
         dataType: 'JSON',
         data:{

@@ -19,7 +19,7 @@ function onHtmlLoaded(){
             user.login(emailText,passwordText).done(function(response){
                 if(response.isLogged === true){
                       invalidCredentials.html("*");
-                     window.location.href = 'https://web91-ciprianbiscovan.c9users.io/UI/pages/applications.html';
+                     window.location.href = '/UI/pages/applications.html';
                 }else{
                       invalidCredentials.html("*"+response.error);
                 }
