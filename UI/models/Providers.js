@@ -8,7 +8,7 @@ function Providers(){
    
         var that =this;
         var config={
-            url:"https://web91-didisuperapple.c9users.io/api/users/list", // check for api path
+            url:"https://web91-didisuperapple.c9users.io/api/users/list", 
             method: "GET",
             success: function(resp) {
                 var providers = JSON.parse(resp);
