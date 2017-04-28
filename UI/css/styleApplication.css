@@ -25,3 +25,10 @@ font-Weight:bold;
 font-size:20px;
 }
 
+.hide{
+    visibility: hidden;
+}
+
+.show{
+    visibility: visible;
+}

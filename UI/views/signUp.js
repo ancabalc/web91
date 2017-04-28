@@ -8,13 +8,18 @@ $(document).ready(onHtmlLoaded);
  var passwordText = undefined;
  var repasswordText = undefined;
  var roleText = undefined;
+ var jobText = undefined;
+ var descriptionText  = undefined;
+ var avatar = undefined;
+ var filePicker = undefined;
 
 function onHtmlLoaded(){
     
     var submitButton = $("button[type='submit']");
+    filePicker = $("input[type='file']");
 
     submitButton.on('click',submit);
-    
+    filePicker.change(pictureSelected);
     
     
 }//END onHtmlLoaded function
@@ -27,10 +32,34 @@ function submit(){
     passwordText = $("input[name='password']").val();
     repasswordText = $("input[name='repassword']").val();
     roleText = $("input[type='radio']:checked").val();
+    jobText = $("input[name='job']").val();
+    descriptionText = $("input[name='description']").val();
     
      if(checkUserInputs()){
          
-         console.log('Sending data to the server')
+         console.log('Sending data to the server');
+         
+         var user = new Users();
+         
+         var newUser = {
+             name: nameText,
+             email:emailText,
+             password:passwordText,
+             repassword:repasswordText,
+             role:roleText,
+             job:jobText,
+             description:descriptionText,
+             picture:avatar
+         };
+         
+        user.createUser(newUser).done(function(response){
+            if(response.success === true){
+                console.log(response.message);
+                window.location.href = "/UI/pages/login.html";
+            }else{
+                console.log(response.message);
+            }
+        });
      }
 }
 
@@ -42,6 +71,9 @@ function checkUserInputs(){
     var errorPassword = $('#error-password');
     var errorRepassword = $('#error-repassword');
     var errorRole = $('#error-role');
+    var errorJob = $('#error-job');
+    var errorDesc = $('#error-description');
+    var errorFile = $('#error-file');
   
     if(nameText === undefined || emailText === undefined || passwordText === undefined || repasswordText === undefined){
         alert("Internal error.Cannot get all inputs!!!");
@@ -88,8 +120,47 @@ function checkUserInputs(){
     }else{
         errorRole.html('*');
     }
+    if(jobText.trim().length === 0){
+        errorJob.html("*Job cannot be empty");
+        allClear = false;
+    }else{
+        errorJob.html("*");
+    }
+    if(descriptionText.trim().length === 0){
+        errorDesc.html("*Description cannot be empty");
+        allClear = false;
+    }else{
+        errorDesc.html("*");
+    }
+    if(avatar === undefined){
+        errorFile.html("*Choose a picture!");
+        allClear = false;
+    }else{
+        errorFile.html("*");
+    }
   
     return allClear;
+}
+
+function pictureSelected(ev){
+    
+    if(ev.target.files[0]){
+        var fileType = ev.target.files[0].type;
+        
+        if(fileType.match(/^image\/.*$/gmi)){
+            avatar = ev.target.files[0]; 
+            $("#error-file").html("*");
+            if((avatar.size/1000)>100){
+                avatar = undefined;
+                $("#error-file").html("*Picture too large (max. 100Kb allowed)");
+            }
+        }else{
+            avatar = undefined;
+            $("#error-file").html("* Selected file is not valid. Only images are accepted!");
+        }
+    }else{
+        filePicker.val('');
+    }
 }
 
   //Validate user email

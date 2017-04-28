@@ -1,4 +1,6 @@
 <IfModule mod_rewrite.c>
 RewriteEngine on
+
+RewriteCond %{REQUEST_URI} !^/api/avatars/*.
 RewriteRule ^api/(.*)$ api/index.php [L]
 </IfModule>

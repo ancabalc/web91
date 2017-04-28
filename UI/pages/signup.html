@@ -167,7 +167,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-6 control-label">Rol (optional):</label>
+                                <label class="col-sm-6 control-label">Rol (obligatoriu):</label>
                                 <div class="col-sm-6">
                                     <input type="radio"  name="role" value="client" class="role-input"> Client
                                     <input type="radio"  name="role" value="provider" class="role-input"> Furnizor
@@ -175,15 +175,24 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-6 control-label" for="description">Scurta descriere (optional):</label>
+                                <label class="col-sm-6 control-label" for="job">Job (obligatoriu):</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control description-input" id="description" name="description" placeholder="Descriere">
+                                    <input type="text" class="form-control name-input" id="job" name="job" minlength="3" placeholder="Job" required>
+                                    <p id='error-job'>*</p>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-6 control-label" for="avatar">Incarca o poza pemtru avatar mai mica de 100 kB (optional):</label>
+                                <label class="col-sm-6 control-label" for="description">Scurta descriere (obligatoriu):</label>
                                 <div class="col-sm-6">
-                                    <input type="file" class="form-control image-input" id="avatar" name="image" placeholder="Avatar">
+                                    <input type="text" class="form-control description-input" id="description" name="description" placeholder="Descriere">
+                                    <p id='error-description'>*</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label" for="avatar">Incarca o poza pentru avatar mai mica de 100 kB (obligatoriu):</label>
+                                <div class="col-sm-6">
+                                    <input type="file" class="form-control image-input" id="avatar" name="image" placeholder="Avatar" accept="image/*">
+                                    <p id='error-file'>*</p>
                                 </div>
                             </div>
                             <button type="submit" class="btn-theme btn-theme-sm btn-base-bg text-uppercase sign-up-btn">Sign up</button>
