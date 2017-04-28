@@ -3,8 +3,31 @@
 function Users() {
     this.models = [];
 }
-        //==========UPDATEING USER==========\\
+        //==========CREATE USER==========\\
 
+Users.prototype.createUser = function(user){
+  
+  var config = {
+      url: 'https://web91-ciprianbiscovan.c9users.io/api/accounts/create',
+      method: 'POST',
+      dataType: 'JSON',
+      data:{
+          name: user.name,
+          email:user.email,
+          password: user.password,
+          repassword: user.repassword,
+          role: user.role
+      },
+      
+      error: function(){
+          
+      }
+  };  
+    
+};
+
+        //==========UPDATEING USER==========\\
+        
 Users.prototype.updateUser = function(name,description,image) {
         
         var ajaxOptions = {

@@ -4,8 +4,8 @@
 
 $(window).ready(function(){
     var users = new Users();
-    var id = 1;
-    var userDef = users.getUserProfile(id);
+    //var id = 1;
+    var userDef = users.getUserById();
     userDef.done(populateUser);
     var image = null;
     
