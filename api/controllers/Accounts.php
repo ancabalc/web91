@@ -130,6 +130,30 @@
                 return array("success"=>false,"message"=>"Nobody is loggedIn!");
             }
         }
+        
+        function checkSession(){
+            if(!isset($_SESSION["isLogged"]) || (isset($_SESSION["isLogged"]) && $_SESSION["isLogged"] === false )){
+                return array('isLogged'=>false,"message"=>"Nobody logged in!");
+            }else{
+                if($_SESSION["isLogged"] === true){
+                    return array('isLogged'=>true,"message"=>"Logged In","id"=>$_SESSION["user_id"]);
+                }else{
+                     return array('isLogged'=>false,"message"=>"Somebody could be logged!");
+                }
+            }
+        }
+        
+        function logout(){
+            if(isset($_SESSION["isLogged"]) && $_SESSION["isLogged"] === true ){
+                unset($_SESSION['isLogged']);
+                unset($_SESSION['user_id']);
+                unset($_SESSION['name']);
+                session_destroy();
+                 return array("success"=>true,"message"=>"Logout successfull!");
+            }else{
+                return array("success"=>false,"message"=>"Nobody is loggedIn!");
+            }
+        }
             
         
     }//END class

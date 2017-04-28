@@ -1,7 +1,10 @@
 <?php
     $path = "models/UsersModel.php";
+<<<<<<< HEAD
     require_once "views/users.js";
 
+=======
+>>>>>>> 81c26b9dc7b3c75237dd70ebd70b9a28743e9877
     
     require_once "$path";
     
@@ -38,6 +41,7 @@
         public function listTopProviders() {
             return $this->usersModel->listTopProviders();
             }
+
         
    
     //==========UPDATEING USER==========\\
